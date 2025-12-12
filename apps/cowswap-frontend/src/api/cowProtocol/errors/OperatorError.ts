@@ -48,7 +48,10 @@ export enum ApiErrorCodes {
   UnsupportedSellTokenSource = 'UnsupportedSellTokenSource',
   UnsupportedToken = 'UnsupportedToken',
   WrongOwner = 'WrongOwner',
+  // ZeroAmount returned during order creation and checks both buy and sell amount
   ZeroAmount = 'ZeroAmount',
+  // ZeroBuyAmount returned during quote fetch and checks only buy amount
+  ZeroBuyAmount = 'ZeroBuyAmount',
   UNHANDLED_GET_ERROR = 'UNHANDLED_GET_ERROR',
   UNHANDLED_CREATE_ERROR = 'UNHANDLED_CREATE_ERROR',
   UNHANDLED_DELETE_ERROR = 'UNHANDLED_DELETE_ERROR',
@@ -91,6 +94,7 @@ export enum ApiErrorCodeDetails {
   UnsupportedToken = 'One of the tokens you are trading is unsupported. Please read the FAQ for more info.',
   WrongOwner = "The signature is invalid.\n\nIt's likely that the signing method provided by your wallet doesn't comply with the standards required by CoW Swap.\n\nCheck whether your Wallet app supports off-chain signing (EIP-712 or ETHSIGN).",
   ZeroAmount = 'Order amount cannot be zero.',
+  ZeroBuyAmount = 'Buy amount cannot be zero.',
   UNHANDLED_GET_ERROR = 'Order fetch failed. This may be due to a server or network connectivity issue. Please try again later.',
   UNHANDLED_CREATE_ERROR = 'The order was not accepted by the network.',
   UNHANDLED_DELETE_ERROR = 'The order cancellation was not accepted by the network.',

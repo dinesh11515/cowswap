@@ -15,6 +15,7 @@ export enum QuoteApiErrorCodes {
   InsufficientLiquidity = 'InsufficientLiquidity',
   FeeExceedsFrom = 'FeeExceedsFrom',
   ZeroPrice = 'ZeroPrice',
+  ZeroBuyAmount = 'ZeroBuyAmount',
   TransferEthToContract = 'TransferEthToContract',
   SameBuyAndSellToken = 'SameBuyAndSellToken',
   UNHANDLED_ERROR = 'UNHANDLED_ERROR',
@@ -26,6 +27,7 @@ export enum QuoteApiErrorDetails {
   UnsupportedToken = 'One of the tokens you are trading is unsupported. Please read the FAQ for more info.',
   InsufficientLiquidity = 'Token pair selected has insufficient liquidity.',
   FeeExceedsFrom = 'Current fee exceeds entered "from" amount.',
+  ZeroBuyAmount = 'Buy amount cannot be zero.',
   ZeroPrice = 'Quoted price is zero. This is likely due to a significant price difference between the two tokens. Please try increasing amounts.',
   TransferEthToContract = 'Buying native currencies using smart contract wallets is not currently supported.',
   SameBuyAndSellToken = 'You are trying to buy and sell the same token.',
@@ -47,6 +49,12 @@ export function mapOperatorErrorToQuoteError(error?: ApiErrorObject): QuoteApiEr
         errorType: QuoteApiErrorCodes.FeeExceedsFrom,
         description: QuoteApiErrorDetails.FeeExceedsFrom,
         data: error?.data,
+      }
+
+    case ApiErrorCodes.ZeroBuyAmount:
+      return {
+        errorType: QuoteApiErrorCodes.ZeroBuyAmount,
+        description: QuoteApiErrorDetails.ZeroBuyAmount,
       }
 
     case ApiErrorCodes.UnsupportedToken:
